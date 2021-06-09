@@ -1,0 +1,31 @@
+
+input.ng-touched.ng-invalid {
+    border: solid 1px red
+}
+
+
+@media screen and (max-width: 780px) and (orientation: portrait) {
+    .mobile {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 15% auto 15%;
+        grid-template-rows: 10% auto auto auto auto 15%;
+    }
+
+    h1 {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        text-align: center;
+        margin: auto;
+    }
+
+    .form-mobile {
+        grid-column-start: 2;
+        grid-row-start: 3;
+        display: grid;
+        grid-template-rows: auto auto ;
+    }
+
+}
