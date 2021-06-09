@@ -29,16 +29,21 @@ export class AccessoRegistrazioneComponent implements OnInit {
   }
 
   registra() {
+    this.setUtente()
+    this.loginService.registra(this.utente)
+  }
+
+  accedi() {
+    this.setUtente()
+    this.loginService.accedi(this.utente)
+  }
+
+  setUtente() {
     this.utente = {
       _id: null,
       username: this.form.get('username').value,
       password: this.form.get('password').value
     }
-    this.loginService.registra(this.utente)
-  }
-
-  accedi() {
-    alert('acc')
   }
 
 }

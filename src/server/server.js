@@ -55,3 +55,17 @@ app.post(
     }
 )
 
+app.post(
+    '/api/accesso',
+    (req, res) => {
+        let utente = req.body;
+        utenteModel.find({ username: utente.username, password: MD5(utente.password).toString() }).then(utenteLogin => {
+            if (utenteLogin.length == 0) {
+                return res.status(400).send('Credenziali errate!')
+            } else {
+                return res.status(200).send(utenteLogin)
+            }
+        })
+    }
+)
+
