@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Utente } from '../models/utente.model';
 import { LoginService } from './login.service';
 
@@ -30,7 +31,12 @@ export class AccessoRegistrazioneComponent implements OnInit {
 
   registra() {
     this.setUtente()
-    this.loginService.registra(this.utente)
+    if (this.utente.password === this.form.get('conferma').value) {
+      this.loginService.registra(this.utente)
+    } else {
+      Swal.fire('Attenzione!','Le password inserite non combaciano!','error')
+      this.form.get('conferma').reset()
+    }
   }
 
   accedi() {
